@@ -71,4 +71,24 @@ public class ItemQueues {
         return toSend;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ItemQueues that = (ItemQueues) o;
+
+        if (low != null ? !low.equals(that.low) : that.low != null) return false;
+        if (lowest != null ? !lowest.equals(that.lowest) : that.lowest != null) return false;
+        return high != null ? high.equals(that.high) : that.high == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = low != null ? low.hashCode() : 0;
+        result = 31 * result + (lowest != null ? lowest.hashCode() : 0);
+        result = 31 * result + (high != null ? high.hashCode() : 0);
+        return result;
+    }
 }
