@@ -1,6 +1,9 @@
 
-import java.util.LinkedList;
-import java.util.List;
+import javafx.collections.transformation.SortedList;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.Line;
+
+import java.util.*;
 
 /**
  * Item Queues
@@ -12,7 +15,6 @@ public class ItemQueues {
     private List<LineItem> low;
     private List<LineItem> lowest;
     private List<LineItem> high;
-
     public ItemQueues(){
         low    = new LinkedList<LineItem>();
         lowest = new LinkedList<LineItem>();
@@ -21,6 +23,9 @@ public class ItemQueues {
 
     public void add (LineItem lineItem){
         switch (lineItem.getPriority()){
+            case HIGHEST:
+                Message.send(lineItem);
+                break;
             case LOW:
                 low.add(lineItem);
                 break;
@@ -36,21 +41,33 @@ public class ItemQueues {
     /*
      * Returns a list of items to be send to the Async system
      * 10 at a time.
+     * no need to worry about the order because it is insertion order
      */
     public List<LineItem> getToSendList(){
-        List<LineItem> toSend = new LinkedList<LineItem>();
+
+        List<LineItem> toSend = new ArrayList<LineItem>();
+
         int length = high.size();
-        for (int i=0; i< length/2; ++i){
-            toSend.add(high.remove(i));
+        if (length !=0) {
+            for (int i = 0; i < length / 2; ++i) {
+                toSend.add(high.remove(i));
+            }
         }
+
         length = low.size();
-        for (int i = 0; i < length/3 ; ++i){
-            toSend.add(low.remove(i));
+        if (length !=0 ) {
+            for (int i = 0; i < length / 3; ++i) {
+                toSend.add(low.remove(i));
+            }
         }
+
         length = lowest.size();
-        for (int i= 0; i < length/4; ++i){
-            toSend.add(lowest.remove(i));
+        if (length !=0 ) {
+            for (int i = 0; i < length / 4; ++i) {
+                toSend.add(lowest.remove(i));
+            }
         }
+
         return toSend;
     }
 
