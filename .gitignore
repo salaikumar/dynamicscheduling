@@ -4,7 +4,7 @@
 *.iml
 
 ## Directory-based project format:
-.idea/
+*.idea/
 
 ## Plugin-specific files:
 
