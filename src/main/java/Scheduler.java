@@ -38,4 +38,8 @@ public class Scheduler {
             itemQueues.add(new LineItem(itemId,merchantId,marketPlaceId,priority,data_type));
         }
     }
+
+    public ItemQueues getItemQueues() {
+        return itemQueues;
+    }
 }
