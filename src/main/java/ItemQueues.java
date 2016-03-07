@@ -15,10 +15,12 @@ public class ItemQueues {
     private List<LineItem> low;
     private List<LineItem> lowest;
     private List<LineItem> high;
+    private List<LineItem> normal;
     public ItemQueues(){
         low    = new LinkedList<LineItem>();
         lowest = new LinkedList<LineItem>();
         high   = new LinkedList<LineItem>();
+        normal = new LinkedList<LineItem>();
     }
 
     public void add (LineItem lineItem){
@@ -35,6 +37,11 @@ public class ItemQueues {
             case HIGH:
                 high.add(lineItem);
                 break;
+            case NORMAL:
+                normal.add(lineItem);
+                break;
+            default:
+                normal.add(lineItem);
         }
     }
 
@@ -49,8 +56,15 @@ public class ItemQueues {
 
         int length = high.size();
         if (length !=0) {
-            for (int i = 0; i < length / 2; ++i) {
+            for (int i = 0; i < length; ++i) {
                 toSend.add(high.remove(i));
+            }
+        }
+
+        length = high.size();
+        if (length !=0) {
+            for (int i = 0; i < length/2; ++i) {
+                toSend.add(normal.remove(i));
             }
         }
 

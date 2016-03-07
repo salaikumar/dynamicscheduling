@@ -25,14 +25,16 @@ public class Scheduler {
             int merchantId = Integer.parseInt(properties[1]);
             int marketPlaceId = Integer.parseInt(properties[2]);
             String data_type = properties[4];
-            Priority priority;
-            if (properties[3] == "HIGHEST")
+            Priority priority = Priority.NORMAL;
+            if (properties[3].equalsIgnoreCase("HIGHEST") )
                 priority = Priority.HIGHEST;
-            else if (properties[3] == "HIGH")
+            else if (properties[3].equalsIgnoreCase("HIGH"))
                 priority = Priority.HIGH;
-            else if (properties[3] == "LOW")
+            else if (properties[3].equalsIgnoreCase("LOW"))
                 priority = Priority.LOW;
-            else
+            else if (properties[3].equalsIgnoreCase("NORMAL"))
+                priority = Priority.NORMAL;
+            else if (properties[3].equalsIgnoreCase("LOWEST"))
                 priority = Priority.LOWEST;
 
             itemQueues.add(new LineItem(itemId,merchantId,marketPlaceId,priority,data_type));
