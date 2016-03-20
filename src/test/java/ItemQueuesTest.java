@@ -28,7 +28,7 @@ public class ItemQueuesTest {
 
         List<LineItem> toSendList = itemQueues.getToSendList();
         assertThat(toSendList.contains(new LineItem("ITEM25",25,25,Priority.HIGHEST,"AUX_ITEM")),is(false));
-        assertThat(toSendList.contains(new LineItem("ITEM11",1234511,1,Priority.LOWEST,"PRICE")),is(false));
+        assertThat(toSendList.contains(new LineItem("ITEM11",1234511,1,Priority.LOWEST,"PRICE")),is(true));
         assertThat(toSendList.contains(new LineItem("ITEM2",12645,1,Priority.HIGH,"ITEM")),is(true));
 
     }

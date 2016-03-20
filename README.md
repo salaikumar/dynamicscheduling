@@ -20,8 +20,7 @@ The goal is to build a scalable distributed system that can batch requests and s
 
 ## Solution
     Execute the Driver.java to see by providing a proper path to the file. 
-    javac Driver.java
-    java Driver <Path to your file> 
+    java -cp target/dynamic-scheduling-1.0-SNAPSHOT.jar Driver <Path to File> 
     
 ### Note
 Pending : Scaling and Querying the data is pending
