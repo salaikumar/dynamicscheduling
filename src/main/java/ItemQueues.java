@@ -1,13 +1,11 @@
 
-import javafx.collections.transformation.SortedList;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Line;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Item Queues
- * Contains 3 lists for each priority.
+ * Contains lists for each priority.
  * The HIGHEST is directly passed on to the Async messaging system.
  * A async messaging system reads  it based on the some predefined ratio
  */
@@ -45,6 +43,10 @@ public class ItemQueues {
         }
     }
 
+    public boolean isEmpty(){
+        return low.isEmpty() && lowest.isEmpty()
+                && normal.isEmpty() && high.isEmpty();
+    }
     /*
      * Returns a list of items to be send to the Async system
      * 10 at a time.
@@ -61,23 +63,26 @@ public class ItemQueues {
             }
         }
 
-        length = high.size();
-        if (length !=0) {
-            for (int i = 0; i < length/2; ++i) {
+        length = normal.size();
+        int copyLength = ( length < 2 ) ?  length % 2: length / 2;
+        if (copyLength !=0) {
+            for (int i = 0; i < copyLength; ++i) {
                 toSend.add(normal.remove(i));
             }
         }
 
         length = low.size();
-        if (length !=0 ) {
-            for (int i = 0; i < length / 3; ++i) {
+        copyLength = ( length < 3 ) ?  length % 3: length / 3;
+        if (copyLength !=0 ) {
+            for (int i = 0; i < copyLength; ++i) {
                 toSend.add(low.remove(i));
             }
         }
 
         length = lowest.size();
-        if (length !=0 ) {
-            for (int i = 0; i < length / 4; ++i) {
+        copyLength = ( length < 4 ) ?  length % 4: length / 4;
+        if (copyLength !=0 ) {
+            for (int i = 0; i < copyLength; ++i) {
                 toSend.add(lowest.remove(i));
             }
         }
@@ -91,11 +96,9 @@ public class ItemQueues {
         if (o == null || getClass() != o.getClass()) return false;
 
         ItemQueues that = (ItemQueues) o;
-
         if (low != null ? !low.equals(that.low) : that.low != null) return false;
         if (lowest != null ? !lowest.equals(that.lowest) : that.lowest != null) return false;
         return high != null ? high.equals(that.high) : that.high == null;
-
     }
 
     @Override
