@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Item Queues
@@ -10,10 +11,10 @@ import java.util.List;
  * A async messaging system reads  it based on the some predefined ratio
  */
 public class ItemQueues {
-    private List<LineItem> low;
-    private List<LineItem> lowest;
-    private List<LineItem> high;
-    private List<LineItem> normal;
+    private Queue<LineItem> low;
+    private Queue<LineItem> lowest;
+    private Queue<LineItem> high;
+    private Queue<LineItem> normal;
     public ItemQueues(){
         low    = new LinkedList<LineItem>();
         lowest = new LinkedList<LineItem>();
@@ -59,7 +60,7 @@ public class ItemQueues {
         int length = high.size();
         if (length !=0) {
             for (int i = 0; i < length; ++i) {
-                toSend.add(high.remove(i));
+                toSend.add(high.poll());
             }
         }
 
@@ -67,7 +68,7 @@ public class ItemQueues {
         int copyLength = ( length < 2 ) ?  length % 2: length / 2;
         if (copyLength !=0) {
             for (int i = 0; i < copyLength; ++i) {
-                toSend.add(normal.remove(i));
+                toSend.add(normal.poll());
             }
         }
 
@@ -75,7 +76,7 @@ public class ItemQueues {
         copyLength = ( length < 3 ) ?  length % 3: length / 3;
         if (copyLength !=0 ) {
             for (int i = 0; i < copyLength; ++i) {
-                toSend.add(low.remove(i));
+                toSend.add(low.poll());
             }
         }
 
@@ -83,7 +84,7 @@ public class ItemQueues {
         copyLength = ( length < 4 ) ?  length % 4: length / 4;
         if (copyLength !=0 ) {
             for (int i = 0; i < copyLength; ++i) {
-                toSend.add(lowest.remove(i));
+                toSend.add(lowest.poll());
             }
         }
 
