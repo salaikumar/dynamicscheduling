@@ -7,7 +7,7 @@ public class Driver {
     public static void main(String[] args){
         Scheduler scheduler = new Scheduler();
         try {
-            scheduler.schedule("/home/salaikumar/WebApps/Items");
+            scheduler.schedule(args[0]); // "/home/salaikumar/WebApps/Items" -> Your file path
         } catch (IOException e) {
             e.printStackTrace();
         }
