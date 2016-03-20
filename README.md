@@ -22,5 +22,14 @@ The goal is to build a scalable distributed system that can batch requests and s
     Execute the Driver.java to see by providing a proper path to the file. 
     java -cp target/dynamic-scheduling-1.0-SNAPSHOT.jar Driver <Path to File> 
     
+### Sample Output
+    LineItem{itemId='ITEM3', merchantId=19345, marketplaceId=4, priority=HIGHEST, dataType='AUX_ITEM'}
+    LineItem{itemId='ITEM2', merchantId=12645, marketplaceId=1, priority=HIGH, dataType='PRICE'}
+    LineItem{itemId='ITEM1', merchantId=12345, marketplaceId=4, priority=NORMAL, dataType='ITEM'}
+    LineItem{itemId='ITEM1', merchantId=12345, marketplaceId=4, priority=LOW, dataType='ITEM'}
+    LineItem{itemId='ITEM2', merchantId=12645, marketplaceId=5, priority=LOWEST, dataType='ITEM'}
+    LineItem{itemId='ITEM3', merchantId=17345, marketplaceId=4, priority=LOW, dataType='AUX_ITEM'}
+    LineItem{itemId='ITEM1', merchantId=12345, marketplaceId=4, priority=LOW, dataType='ITEM'}
+    
 ### Note
 Pending : Scaling and Querying the data is pending
