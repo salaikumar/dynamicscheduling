@@ -8,7 +8,6 @@ import java.util.Queue;
  * Item Queues
  * Contains lists for each priority.
  * The HIGHEST is directly passed on to the Async messaging system.
- * A async messaging system reads  it based on the some predefined ratio
  */
 public class ItemQueues {
     private Queue<LineItem> low;
@@ -50,13 +49,10 @@ public class ItemQueues {
     }
     /*
      * Returns a list of items to be send to the Async system
-     * 10 at a time.
      * no need to worry about the order because it is insertion order
      */
     public List<LineItem> getToSendList(){
-
         List<LineItem> toSend = new ArrayList<LineItem>();
-
         int length = high.size();
         if (length !=0) {
             for (int i = 0; i < length; ++i) {
@@ -87,7 +83,6 @@ public class ItemQueues {
                 toSend.add(lowest.poll());
             }
         }
-
         return toSend;
     }
 

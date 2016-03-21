@@ -18,7 +18,6 @@ public class Scheduler {
 
     public void schedule(String fileLocation) throws IOException {
        List<String> lineItems = Files.readAllLines(Paths.get(fileLocation));
-
         for ( String item : lineItems){
             String[] properties = item.split(",");
             String itemId = properties[0];
@@ -36,12 +35,21 @@ public class Scheduler {
                 priority = Priority.NORMAL;
             else if (properties[3].equalsIgnoreCase("LOWEST"))
                 priority = Priority.LOWEST;
-
             itemQueues.add(new LineItem(itemId,merchantId,marketPlaceId,priority,data_type));
         }
     }
 
-    public ItemQueues getItemQueues() {
-        return itemQueues;
+    /*
+     * returns the list of items to be sent
+     */
+    public List<LineItem> getItems(){
+        return itemQueues.getToSendList();
+    }
+
+    /*
+     * returns if the items Queue is empty
+     */
+    public boolean isQueueEmpty(){
+        return itemQueues.isEmpty();
     }
 }
