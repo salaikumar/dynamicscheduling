@@ -1,5 +1,7 @@
+package priorityscheduler;
+
 /**
- * Priority Enum
+ * priorityscheduler.Priority Enum
  */
 public enum Priority {
     LOW,

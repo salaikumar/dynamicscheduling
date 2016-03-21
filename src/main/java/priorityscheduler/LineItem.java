@@ -1,3 +1,5 @@
+package priorityscheduler;
+
 /**
  * Line item
  * Corresponds to each record in the file.
@@ -73,7 +75,7 @@ public class LineItem {
 
     @Override
     public String toString() {
-        return "LineItem{" +
+        return "priorityscheduler.LineItem{" +
                 "itemId='" + itemId + '\'' +
                 ", merchantId=" + merchantId +
                 ", marketplaceId=" + marketplaceId +

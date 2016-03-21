@@ -1,5 +1,9 @@
+package priorityscheduler;
 
 import org.junit.Test;
+import priorityscheduler.ItemQueues;
+import priorityscheduler.LineItem;
+import priorityscheduler.Priority;
 
 import java.util.List;
 import static org.hamcrest.core.Is.is;
@@ -21,7 +25,7 @@ public class ItemQueuesTest {
         itemQueues.add(new LineItem("ITEM7",123456,1,Priority.HIGH,"PRICE"));
         itemQueues.add(new LineItem("ITEM8",123457,1,Priority.LOW,"AUX_ITEM"));
         itemQueues.add(new LineItem("ITEM9",123458,1,Priority.LOW,"PRICE"));
-        itemQueues.add(new LineItem("ITEM10",1234510,1,Priority.LOWEST,"AUX_ITEM"));
+        itemQueues.add(new LineItem("ITEM10",1234510,1, Priority.LOWEST,"AUX_ITEM"));
         itemQueues.add(new LineItem("ITEM11",1234511,1,Priority.LOWEST,"PRICE"));
         itemQueues.add(new LineItem("ITEM12",1234512,1,Priority.LOWEST,"AUX_ITEM"));
         itemQueues.add(new LineItem("ITEM25",25,25,Priority.HIGHEST,"AUX_ITEM"));

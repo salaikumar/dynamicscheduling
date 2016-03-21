@@ -1,10 +1,12 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+package priorityscheduler;
+
+import priorityscheduler.ItemQueues;
+import priorityscheduler.LineItem;
+
 import java.util.List;
 
 /**
- * Scheduler
+ * priorityscheduler.Scheduler
  * Reads the file and puts the data in the priority Queues
  */
 public class Scheduler {
@@ -15,7 +17,7 @@ public class Scheduler {
     }
 
     /*
-     * Schedule one item at a time - Decoupling the file reading part from Scheduler
+     * Schedule one item at a time - Decoupling the file reading part from priorityscheduler.Scheduler
      */
     public void schedule(LineItem item){
         itemQueues.add(item);

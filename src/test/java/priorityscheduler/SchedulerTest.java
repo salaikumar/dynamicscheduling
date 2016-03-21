@@ -1,4 +1,9 @@
+package priorityscheduler;
+
 import org.junit.Test;
+import priorityscheduler.LineItem;
+import priorityscheduler.Priority;
+import priorityscheduler.Scheduler;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * UnitTests Scheduler
+ * UnitTests priorityscheduler.Scheduler
  */
 public class SchedulerTest {
 

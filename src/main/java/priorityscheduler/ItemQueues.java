@@ -1,3 +1,4 @@
+package priorityscheduler;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,19 +24,19 @@ public class ItemQueues {
 
     public void add (LineItem lineItem){
         switch (lineItem.getPriority()){
-            case HIGHEST:
+            case Priority.HIGHEST:
                 Message.send(lineItem);
                 break;
-            case LOW:
+            case Priority.LOW:
                 low.add(lineItem);
                 break;
-            case LOWEST:
+            case Priority.LOWEST:
                 lowest.add(lineItem);
                 break;
-            case HIGH:
+            case Priority.HIGH:
                 high.add(lineItem);
                 break;
-            case NORMAL:
+            case Priority.NORMAL:
                 normal.add(lineItem);
                 break;
             default:

@@ -1,4 +1,7 @@
-import javax.sound.sampled.Line;
+package priorityscheduler;
+
+import priorityscheduler.LineItem;
+
 import java.util.List;
 
 
