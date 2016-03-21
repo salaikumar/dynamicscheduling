@@ -19,8 +19,17 @@ The goal is to build a scalable distributed system that can batch requests and s
     ITEM3,19345,4,HIGHEST,AUX_ITEM
 
 ## Solution
-    Execute the Driver.java to see by providing a proper path to the file. 
-    java -cp target/dynamic-scheduling-1.0-SNAPSHOT.jar Driver <Path to File> 
+    Write a Client Program that uses the Scheduler API. 
+     Scheduler sample = new Scheduler();
+        try {
+            sample.schedule(<"Path to file">);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+     while(!sample.isQueuEmpty()){
+        Message.send(sample.getItems());
+     }
+     
     
 ### Sample Output
     LineItem{itemId='ITEM3', merchantId=19345, marketplaceId=4, priority=HIGHEST, dataType='AUX_ITEM'}

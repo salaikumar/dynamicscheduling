@@ -20,8 +20,8 @@ public class SchedulerTest {
             e.printStackTrace();
         }
 
-        ItemQueues itemQueues = sample.getItemQueues();
-        List<LineItem> toSendList = itemQueues.getToSendList();
+//        ItemQueues itemQueues = sample.getItemQueues();
+        List<LineItem> toSendList = sample.getItems();
         assertThat(toSendList.contains(new LineItem("ITEM1",12345,4,Priority.LOW,"ITEM")),is(true));
     }
 }
